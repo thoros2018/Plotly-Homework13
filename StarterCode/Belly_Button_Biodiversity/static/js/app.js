@@ -22,6 +22,7 @@ function buildMetadata(sample) {
   const topTenIDs = results.otu_ids;
   const topTenSamples = results.sample_values;
   const topTenLab = results.otu_labels;
+ console.log(topTenIDs)
   
  var data = [{
     labels: topTenIDs.slice(0,10),
@@ -42,16 +43,16 @@ function buildMetadata(sample) {
     y: results.sample_values,
     mode: 'markers',
     marker: {
-      markersize: results.sample_values,
-      markercolor: results.otu_ids,
-      markercolorscale: "Jet"
+      size: results.sample_values,
+      color: results.otu_ids,
+      colorscale: "Jet"
     }
   };
   
   var bubbleData = [trace1];
   
   var bubbleLayout = {
-    axislabel: {title: "OTU ID"}
+    xaxis: {title: "OTU ID"}
   };
   
   Plotly.newPlot("bubble", bubbleData, bubbleLayout);
